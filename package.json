@@ -30,7 +30,7 @@
     "create-db": "node scripts/create-db",
     "postinstall": "npm run create-db",
     "server": "json-server --watch ./src/database/db.json -p 3333 --quiet",
-    "dev": "npm-run-all --parallel server start"
+    "start": "npm-run-all --parallel server client"
   },
   "eslintConfig": {
     "extends": "react-app"
