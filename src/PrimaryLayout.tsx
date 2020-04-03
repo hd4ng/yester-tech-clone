@@ -1,11 +1,14 @@
 import React from "react"
 import PrimaryHeader from "./PrimaryHeader"
+import "./PrimaryLayout.scss"
 
 const PrimaryLayout: React.FC = ({ children }) => {
   return (
-    <div>
-      <PrimaryHeader />
-      {children} Primary Layout
+    <div className="primary-layout">
+      <div>
+        <PrimaryHeader />
+        {children} Primary Layout
+      </div>
     </div>
   )
 }
