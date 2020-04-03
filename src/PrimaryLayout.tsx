@@ -1,13 +1,15 @@
 import React from "react"
 import PrimaryHeader from "./PrimaryHeader"
 import "./PrimaryLayout.scss"
+import PrimaryFooter from "./PrimaryFooter"
 
-const PrimaryLayout: React.FC = ({ children }) => {
+const PrimaryLayout = () => {
   return (
     <div className="primary-layout">
       <div>
         <PrimaryHeader />
-        {children} Primary Layout
+        <main className="primary-content">Content</main>
+        <PrimaryFooter />
       </div>
     </div>
   )
