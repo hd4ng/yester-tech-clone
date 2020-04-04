@@ -50,6 +50,7 @@ const SignupForm: React.FC<{ onSignup: (user: User) => void }> = ({
           <div>
             <label>
               <input
+                aria-label="use-github"
                 type="checkbox"
                 defaultChecked={useGitHub}
                 onChange={() => setUseGitHub(!useGitHub)}
@@ -105,6 +106,7 @@ const SignupForm: React.FC<{ onSignup: (user: User) => void }> = ({
           />
           <label>
             <input
+              aria-label="show-password"
               onChange={handleShowPassword}
               defaultChecked={showPassword}
               className="passwordCheckbox"
@@ -138,7 +140,7 @@ const SignupForm: React.FC<{ onSignup: (user: User) => void }> = ({
           />
         </div>
         <footer>
-          <button type="submit" className="button">
+          <button type="submit" className="button" aria-label="signup">
             Signup
           </button>
         </footer>
