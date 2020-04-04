@@ -1,12 +1,11 @@
 import React from "react"
-import { As } from "./utils"
+import { PropsWithAs } from "./types"
 
 type CenteredProps = {
-  as?: As
   size?: number
 }
 
-const Centered: React.FC<CenteredProps> = ({
+const Centered: React.FC<PropsWithAs<"div", CenteredProps>> = ({
   as: Component = "div",
   size = 30,
   children,

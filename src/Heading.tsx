@@ -1,16 +1,14 @@
 import React from "react"
 import classnames from "classnames"
 
-import { As } from "./utils"
+import { PropsWithAs } from "./types"
 import "./Heading.scss"
 
 type HeadingProps = {
-  as?: As
   size?: 1 | 2 | 3 | 4
-  className?: string
 }
 
-const Heading: React.FC<HeadingProps> = ({
+const Heading: React.FC<PropsWithAs<"h1", HeadingProps>> = ({
   as: Component = "h1",
   size = 1,
   className,
