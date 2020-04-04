@@ -16,7 +16,6 @@ type AuthState = {
 type AuthAction =
   | {
       type: "LOGIN"
-      authenticated: boolean
       user: User
     }
   | { type: "LOGOUT" }
