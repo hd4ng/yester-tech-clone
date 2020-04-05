@@ -36,7 +36,7 @@ test("toggles Use GitHub checkbox", () => {
   const useGitHubCheckbox = screen.getByLabelText("use-github")
 
   // Checked by default
-  expect(useGitHubCheckbox).toHaveAttribute("checked")
+  expect(useGitHubCheckbox).toBeChecked()
 
   // expect(screen.getByText(/search/i)).toBeInTheDocument()
   const searchButton = screen.getByText(/search/i)
@@ -49,6 +49,7 @@ test("toggles Use GitHub checkbox", () => {
   // Uncheck use github
   fireEvent.click(useGitHubCheckbox)
 
+  expect(useGitHubCheckbox).not.toBeChecked()
   waitForElementToBeRemoved(searchButton)
   expect(nameInput).not.toBeDisabled()
   expect(avatarUrlInput).not.toBeDisabled()
@@ -83,10 +84,11 @@ test("toggles show password checkbox", () => {
   const showPasswordCheckbox = screen.getByLabelText("show-password")
   const passwordInput = screen.getByLabelText("password")
 
-  expect(showPasswordCheckbox).not.toHaveAttribute("checked")
+  expect(showPasswordCheckbox).not.toBeChecked()
   expect(passwordInput).toHaveAttribute("type", "password")
 
   fireEvent.click(showPasswordCheckbox)
+  expect(showPasswordCheckbox).toBeChecked()
   expect(passwordInput).toHaveAttribute("type", "text")
 })
 
