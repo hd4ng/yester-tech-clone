@@ -15,6 +15,7 @@ import SignupForm from "./SignupForm"
 import LoginForm from "./LoginForm"
 import * as api from "./api"
 import Account from "./Account"
+import ProductSubNav from "./ProductSubNav"
 
 const PrimaryLayout = () => {
   const history = useHistory()
@@ -46,6 +47,9 @@ const PrimaryLayout = () => {
     <div className="primary-layout">
       <div>
         <PrimaryHeader />
+        <Route path="/products">
+          <ProductSubNav />
+        </Route>
         <main className="primary-content">
           <Switch>
             <Route path="/" exact></Route>
