@@ -1,17 +1,46 @@
-import React from "react"
+import React, { useEffect } from "react"
 import PrimaryHeader from "./PrimaryHeader"
 import "./PrimaryLayout.scss"
 import PrimaryFooter from "./PrimaryFooter"
-import { Switch, Route, Redirect, useHistory } from "react-router-dom"
+import {
+  Switch,
+  Route,
+  Redirect,
+  useHistory,
+  useLocation,
+} from "react-router-dom"
 import { useShoppingCart } from "./ShoppingCartState"
 import { useAuthState } from "./AuthState"
 import SignupForm from "./SignupForm"
 import LoginForm from "./LoginForm"
+import * as api from "./api"
 
 const PrimaryLayout = () => {
   const history = useHistory()
   const { authenticated, dispatch } = useAuthState()
   const { cart } = useShoppingCart()
+  const { key } = useLocation()
+
+  // Get the authenticated user
+  useEffect(() => {
+    let isCurrent = true
+    if (!authenticated) {
+      api.auth.getAuthenticatedUser().then((user) => {
+        if (user && isCurrent) {
+          dispatch({ type: "LOGIN", user })
+        }
+      })
+    }
+
+    return () => {
+      isCurrent = false
+    }
+  }, [authenticated, dispatch])
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [key])
+
   return (
     <div className="primary-layout">
       <div>
@@ -29,7 +58,10 @@ const PrimaryLayout = () => {
             </Route>
             <Route path="/login" exact>
               <LoginForm
-                onAuthenticated={(user) => dispatch({ type: "LOGIN", user })}
+                onAuthenticated={(user) => {
+                  dispatch({ type: "LOGIN", user })
+                  history.push("/")
+                }}
               />
             </Route>
             <Route path="/products"></Route>

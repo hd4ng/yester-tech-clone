@@ -7,13 +7,14 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  MenuLink
+  MenuLink,
 } from "@reach/menu-button"
 import { useAuthState } from "./AuthState"
 import { useShoppingCart } from "./ShoppingCartState"
 import Logo from "./Logo"
 import Avatar from "./Avatar"
 import "./PrimaryHeader.scss"
+import * as api from "./api"
 import "@reach/menu-button/styles.css"
 
 const PrimaryHeader = () => {
@@ -21,7 +22,9 @@ const PrimaryHeader = () => {
   const { getCartSize } = useShoppingCart()
   const cartSize = getCartSize()
 
-  const handleLogout = () => {}
+  const handleLogout = () => {
+    api.auth.logout().then(() => dispatch({ type: "LOGOUT" }))
+  }
 
   return (
     <div className="primary-header">
