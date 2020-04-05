@@ -14,6 +14,7 @@ import { useAuthState } from "./AuthState"
 import SignupForm from "./SignupForm"
 import LoginForm from "./LoginForm"
 import * as api from "./api"
+import Account from "./Account"
 
 const PrimaryLayout = () => {
   const history = useHistory()
@@ -66,7 +67,11 @@ const PrimaryLayout = () => {
             </Route>
             <Route path="/products"></Route>
             {cart.length > 0 && <Route path="/checkout"></Route>}
-            {authenticated && <Route path="/account"></Route>}
+            {authenticated && (
+              <Route path="/account">
+                <Account />
+              </Route>
+            )}
             <Redirect to="/" />
           </Switch>
         </main>
