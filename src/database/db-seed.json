@@ -13,6 +13,13 @@
       "name": "Bruce Lee",
       "password": "password",
       "avatarUrl": "/images/bruce-lee.jpg"
+    },
+    {
+      "id": 3,
+      "username": "hdang",
+      "name": "Huy Dang",
+      "password": "123",
+      "avatarUrl": "https://avatars1.githubusercontent.com/u/29898753?v=4"
     }
   ],
   "products": [

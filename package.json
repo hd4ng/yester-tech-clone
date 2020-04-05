@@ -1,6 +1,7 @@
 {
   "name": "yester-tech-clone",
   "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "@reach/menu-button": "^0.9.1",
     "classnames": "^2.2.6",
@@ -33,7 +34,8 @@
     "kill-db-port": "node scripts/kill-db-port 3333",
     "create-db": "node scripts/create-db",
     "postinstall": "npm run create-db",
-    "server": "json-server --watch ./src/database/db.json -p 3333 --quiet",
+    "run-db": "json-server --watch ./src/database/db.json -p 3333 --quiet",
+    "server": "run-s create-db run-db",
     "client": "react-scripts start",
     "start": "npm-run-all --parallel server client",
     "build": "react-scripts build",
