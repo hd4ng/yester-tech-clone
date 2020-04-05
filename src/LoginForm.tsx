@@ -8,7 +8,7 @@ import Heading from "./Heading"
 import Notice from "./Notice"
 
 type LoginFormProps = {
-  onAuthenticated: (user: User) => void
+  onAuthenticated: (user: Omit<User, "password">) => void
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({ onAuthenticated }) => {

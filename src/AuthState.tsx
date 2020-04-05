@@ -4,25 +4,25 @@ import React, {
   createContext,
   useReducer,
   useCallback,
-  useContext
+  useContext,
 } from "react"
 import { User } from "./models"
 
 type AuthState = {
   authenticated: boolean
-  user: User
+  user: Omit<User, "password">
 }
 
 type AuthAction =
   | {
       type: "LOGIN"
-      user: User
+      user: Omit<User, "password">
     }
   | { type: "LOGOUT" }
 
 const initialState: AuthState = {
   authenticated: false,
-  user: {} as User
+  user: {} as Omit<User, "password">,
 }
 
 type IAuthStateContext = AuthState & {

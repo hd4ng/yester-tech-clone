@@ -1,10 +1,14 @@
 import { get } from "./utils"
 import * as storage from "../localStorage"
+import { User } from "../models"
 
 // We use local storage to simulate the fact that these promise-based function
 // calls would really be talking to a server that would probably set a session
 // or JWT
-export function login(username: string, password: string) {
+export function login(
+  username: string,
+  password: string
+): Promise<Omit<User, "password">> {
   return get(`/users?username=${username}&password=${password}`).then(
     (results) => {
       if (results.length > 0) {
