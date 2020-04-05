@@ -1,17 +1,11 @@
 import React from "react"
-import {
-  render as renderRTL,
-  screen,
-  cleanup,
-  fireEvent,
-} from "@testing-library/react"
+import { render as renderRTL, screen, fireEvent } from "@testing-library/react"
 import { History, createMemoryHistory } from "history"
 import { Router } from "react-router-dom"
 import PrimaryLayout from "../PrimaryLayout"
 import { AuthStateProvider } from "../AuthState"
 import { ShoppingCartProvider } from "../ShoppingCartState"
 
-afterEach(cleanup)
 window.scrollTo = jest.fn()
 test("full app rendering/navigating", () => {
   render(<PrimaryLayout />)

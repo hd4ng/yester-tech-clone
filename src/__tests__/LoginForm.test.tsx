@@ -1,11 +1,5 @@
 import React from "react"
-import {
-  render,
-  screen,
-  fireEvent,
-  cleanup,
-  waitFor,
-} from "@testing-library/react"
+import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import LoginForm from "../LoginForm"
 import * as api from "../api/auth"
 
@@ -21,7 +15,9 @@ const mockUser = {
   password: "123",
 }
 
-afterEach(cleanup)
+afterEach(() => {
+  jest.clearAllMocks()
+})
 
 test("hide/show password", () => {
   render(<LoginForm onAuthenticated={onAuthenticated} />)

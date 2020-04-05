@@ -24,7 +24,7 @@ const mockUser: User = {
   password: "123",
 }
 
-afterEach(cleanup)
+afterEach(() => jest.clearAllMocks())
 
 const mockApiAuth = apiAuth as jest.Mocked<typeof apiAuth>
 const mockApiUsers = apiUsers as jest.Mocked<typeof apiUsers>
