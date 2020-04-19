@@ -15,7 +15,7 @@ const ProductImage: React.FC<ProductImageProps> = ({
   return (
     <img
       className={classnames("product-image", className)}
-      style={{ fontSize: `${size}em` }}
+      style={{ fontSize: `${size}rem` }}
       alt={rest.alt || ""}
       {...rest}
     />
