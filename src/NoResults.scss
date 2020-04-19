@@ -1,0 +1,13 @@
+@import "./styles/theme";
+
+.no-results {
+  display: flex;
+  min-height: 10em;
+  border: 1px solid $line-color;
+  border-radius: 1em;
+
+  > div {
+    margin: auto;
+    min-width: 70%;
+  }
+}
