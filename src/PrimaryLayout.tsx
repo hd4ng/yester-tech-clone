@@ -17,6 +17,7 @@ import * as api from "./api"
 import Account from "./Account"
 import ProductSubNav from "./ProductSubNav"
 import Home from "./Home"
+import ProductsLayout from "./ProductsLayout"
 
 const PrimaryLayout = () => {
   const history = useHistory()
@@ -72,7 +73,9 @@ const PrimaryLayout = () => {
                 }}
               />
             </Route>
-            <Route path="/products"></Route>
+            <Route path="/products">
+              <ProductsLayout />
+            </Route>
             {cart.length > 0 && <Route path="/checkout"></Route>}
             {authenticated && (
               <Route path="/account">
