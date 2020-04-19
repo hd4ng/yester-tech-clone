@@ -13,8 +13,8 @@ import { useAuthState } from "./AuthState"
 import { useShoppingCart } from "./ShoppingCartState"
 import Logo from "./Logo"
 import Avatar from "./Avatar"
-import "./PrimaryHeader.scss"
 import * as api from "./api"
+import "./PrimaryHeader.scss"
 import "@reach/menu-button/styles.css"
 
 const PrimaryHeader = () => {
