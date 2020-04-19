@@ -13,8 +13,14 @@ export type Product = {
   rating: number
 }
 
-type Category = "Games" | "Gadgets" | "Music" | "Storage" | "Toys" | "Computers"
-type Brand =
+export type Category =
+  | "Games"
+  | "Gadgets"
+  | "Music"
+  | "Storage"
+  | "Toys"
+  | "Computers"
+export type Brand =
   | "Nintendo"
   | "Google"
   | "Rio"
