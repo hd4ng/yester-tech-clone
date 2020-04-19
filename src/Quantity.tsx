@@ -63,7 +63,7 @@ const Quantity: React.FC<QuantityProps> = ({ onChange, quantity = 1 }) => {
           />
         </div>
         <div>
-          <button type="button" className="icon-button" onClick={subtrack}>
+          <button type="button" className="icon-button" onClick={add}>
             <FaPlusCircle />
           </button>
         </div>
