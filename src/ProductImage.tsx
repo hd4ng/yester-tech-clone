@@ -3,7 +3,7 @@ import classnames from "classnames"
 
 import "./ProductImage.scss"
 
-type ProductImageProps = { size: number } & React.ImgHTMLAttributes<
+type ProductImageProps = { size?: number } & React.ImgHTMLAttributes<
   HTMLImageElement
 >
 

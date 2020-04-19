@@ -19,7 +19,6 @@ const ProductFilterList: React.FC<ProductFilterListProps> = ({
   const location = useLocation()
   const history = useHistory()
   const search = queryString.parse(location.search) || []
-  console.log({ search: location.search })
 
   const selected = search[urlKey] ? (search[urlKey] as string).split?.(",") : []
 
@@ -42,7 +41,6 @@ const ProductFilterList: React.FC<ProductFilterListProps> = ({
 
   const getClearLink = () => {
     const newSearch = { ...search, page: undefined, [urlKey]: undefined }
-    debugger
     return `${location.pathname}?${queryString.stringify(newSearch)}`
   }
 
