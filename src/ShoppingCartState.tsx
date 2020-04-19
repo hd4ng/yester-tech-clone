@@ -3,7 +3,7 @@ import React, {
   useReducer,
   createContext,
   useContext,
-  useEffect
+  useEffect,
 } from "react"
 import * as storage from "./localStorage"
 import { Cart } from "./models"
@@ -35,8 +35,8 @@ const shoppingCardReducer: Reducer<ShoppingCartState, ShoppingCartAction> = (
 ) => {
   switch (action.type) {
     case "ADD": {
-      const found = state.cart.map(
-        p => p.productId === parseInt(action.productId, 10)
+      const found = state.cart.find(
+        (p) => p.productId === parseInt(action.productId, 10)
       )
       if (!found) {
         return {
@@ -45,8 +45,8 @@ const shoppingCardReducer: Reducer<ShoppingCartState, ShoppingCartAction> = (
             productId: parseInt(action.productId, 10),
             quantity: 1,
             name: action.name || "",
-            price: action.price || 0
-          })
+            price: action.price || 0,
+          }),
         }
       } else {
         return state
@@ -55,14 +55,14 @@ const shoppingCardReducer: Reducer<ShoppingCartState, ShoppingCartAction> = (
     case "UPDATE": {
       let cart
       if (action.quantity > 0) {
-        cart = state.cart.map(product => {
+        cart = state.cart.map((product) => {
           return product.productId === parseInt(action.productId, 10)
             ? { ...product, quantity: action.quantity }
             : product
         })
       } else {
         cart = state.cart.filter(
-          product => product.productId !== parseInt(action.productId, 10)
+          (product) => product.productId !== parseInt(action.productId, 10)
         )
       }
       return { ...state, cart }
@@ -70,7 +70,7 @@ const shoppingCardReducer: Reducer<ShoppingCartState, ShoppingCartAction> = (
     case "REMOVE": {
       const c = state.cart
       const index = c.findIndex(
-        p => p.productId === parseInt(action.productId, 10)
+        (p) => p.productId === parseInt(action.productId, 10)
       )
       const updatedCart = [...c.slice(0, index), ...c.slice(index + 1)]
       return { ...state, cart: updatedCart }
@@ -96,12 +96,13 @@ const ShoppingCartContext = createContext<IShoppingCartContext | undefined>(
 
 export const ShoppingCartProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(shoppingCardReducer, {
-    cart: storage.getCart() || []
+    cart: storage.getCart() || [],
   })
 
   const value: IShoppingCartContext = {
     ...state,
     addToCart(productId, name, price) {
+      debugger
       dispatch({ type: "ADD", name, price, productId })
     },
     updateQuantity(productId, quantity) {
@@ -112,7 +113,7 @@ export const ShoppingCartProvider: React.FC = ({ children }) => {
     },
     getQuantity(productId) {
       if (!Array.isArray(state.cart)) return 0
-      return (state.cart.filter(p => p.productId === productId)[0] || {})
+      return (state.cart.filter((p) => p.productId === productId)[0] || {})
         .quantity
     },
     getCartSize() {
@@ -125,7 +126,7 @@ export const ShoppingCartProvider: React.FC = ({ children }) => {
         (total, item) => total + item.quantity * item.price,
         0
       )
-    }
+    },
   }
 
   return <ShoppingCartContext.Provider value={value} children={children} />
