@@ -18,6 +18,7 @@ import Account from "./Account"
 import ProductSubNav from "./ProductSubNav"
 import Home from "./Home"
 import ProductsLayout from "./ProductsLayout"
+import Checkout from "./Checkout"
 
 const PrimaryLayout = () => {
   const history = useHistory()
@@ -76,7 +77,11 @@ const PrimaryLayout = () => {
             <Route path="/products">
               <ProductsLayout />
             </Route>
-            {cart.length > 0 && <Route path="/checkout"></Route>}
+            {cart.length > 0 && (
+              <Route path="/checkout">
+                <Checkout />
+              </Route>
+            )}
             {authenticated && (
               <Route path="/account">
                 <Account />
