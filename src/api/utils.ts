@@ -1,4 +1,10 @@
-const baseURL = "http://localhost:3333"
+let baseURL: string
+
+if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test") {
+  baseURL = "http://localhost:3333"
+} else {
+  baseURL = "https://my-json-server.typicode.com/hd4ng/yester-tech-data"
+}
 
 export function get(path: string) {
   return fetch(`${baseURL}${path}`).then((res) => res.json())

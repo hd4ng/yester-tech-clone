@@ -11,7 +11,7 @@ test("full app rendering/navigating", () => {
   render(<PrimaryLayout />)
 
   // url: '/'
-  expect(screen.getByRole("heading")).toHaveTextContent(/home/i)
+  expect(screen.getByText(/start browsing/i)).toBeInTheDocument()
 
   // url: '/products'
   fireEvent.click(screen.getByText(/products/i))
