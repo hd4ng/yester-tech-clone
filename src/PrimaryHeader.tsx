@@ -39,7 +39,7 @@ const PrimaryHeader = () => {
             <NavLink to="/" exact className="primary-nav-item">
               Home
             </NavLink>
-            <NavLink to="/products" exact className="primary-nav-item">
+            <NavLink to="/products" className="primary-nav-item">
               Products
             </NavLink>
             {cartSize > 0 && (
