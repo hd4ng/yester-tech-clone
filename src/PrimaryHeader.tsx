@@ -43,7 +43,7 @@ const PrimaryHeader = () => {
               Products
             </NavLink>
             {cartSize > 0 && (
-              <NavLink to="checkout" className="primary-nav-item nav-cart">
+              <NavLink to="/checkout" className="primary-nav-item nav-cart">
                 <MdShoppingCart />
                 <span className="label">{cartSize}</span>
               </NavLink>
